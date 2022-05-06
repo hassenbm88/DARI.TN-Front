@@ -1,0 +1,56 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Visit list</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <a href="javascript:void(0)" class="btn btn-danger btn-round" routerLink="/createvisite">add</a>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+  
+                                  <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Confirmation
+                                    </th>
+                                   
+                                </thead>
+                                <tbody>
+                                    
+                                        <tr *ngFor="let v of Visite | async">
+
+                                        <td>
+                                            {{v.dateVisite | date: 'short'}}
+                                        </td>
+                                        <td>
+                                            {{v.confirmation}}
+                                        </td>
+                                        
+                                       
+                                        <td>
+                                          <a href="javascript:void(0)" class="btn btn-danger btn-round">view</a>
+  
+                                        </td>
+                                        <td class="td-actions text-right">
+                                          <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                              <i class="material-icons">edit</i>
+                                          </button>
+                                          <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" (click)="removeVisite(v.idViste)"class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                              <i class="material-icons">close</i>
+                                          </button>
+                                      </td>
+                                    </tr>
+                               
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           

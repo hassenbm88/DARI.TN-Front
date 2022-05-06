@@ -1,0 +1,90 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <a href="javascript:void(0)" class="btn btn-danger btn-round" routerLink="/table-list">back</a>
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Add a Proprety</h4>
+            <p class="card-category">add a Proprety</p>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+
+                <div class="col-md-3">
+                 <!-- <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Type" [(ngModel)]="Proprety.type">
+                  </mat-form-field> -->
+                  <mat-form-field appearance="fill">
+                    <mat-label>Select an option</mat-label>
+                    <mat-select [(value)]="selected" [(ngModel)]="Proprety.type">
+                      <mat-option>None</mat-option>
+                      <mat-option value="PropertyNormal"> PropertyNormal</mat-option>
+                      <mat-option value="PropertyLuxe">PropertyLuxe</mat-option>
+                    </mat-select>
+                    <!-- <input matInput placeholder="Type" [(ngModel)]="Proprety.type" [value]='selected'> -->
+                  </mat-form-field>
+                 
+                  
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder=" nom" type="Text" [(ngModel)]="Proprety.nom">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder=" address" type="Text" [(ngModel)]="Proprety.adresse">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Region" type="text" [(ngModel)]="Proprety.region">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Surface" type="text" [(ngModel)]="Proprety.surface">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Image" type="text" [(ngModel)]="Proprety.image">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Prix" type="text" [(ngModel)]="Proprety.prix">
+                  </mat-form-field>
+                </div>
+              </div>
+
+
+
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="create()">Create
+                Property</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-profile">
+          
+            <a href="javascript:void(0)">
+              <img class="img" src="./assets/img/faces/prop2.png" />
+            </a>
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
