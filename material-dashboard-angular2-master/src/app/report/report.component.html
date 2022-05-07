@@ -1,0 +1,99 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">List Report </h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+
+<div class="row">
+    <div class="col-md-6">
+    <button type="button" href="javascript:void(0)" class="btn btn-danger btn-round" (click)="addReport()">Add report</button>
+   
+    <form class="form-inline my-2 my-lg-0">
+        <input type="search" (ngModelChange)="searchReport(key.value)" #key="ngModel" ngModel
+               name="key" id="searchId" class="form-control mr-sm-2" placeholder="Search report..." required>
+      </form>
+      
+  </div>
+    
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card" class="text-center">
+            <table class="table">
+                <thead style="background-color:rgb(red, green, blue)">
+                <th>Description</th>
+                <th>Confirmation</th>
+                <th>Reason</th>
+                <th>Actions</th>
+                </thead>
+                <tbody  *ngFor='let p of listReport'>
+                    <tr>
+                        
+                        <td>{{p.description}}</td>
+
+                        <td *ngIf="p.confirmation==true">
+                          <span></span>  
+                            traiter</td>
+                            <td *ngIf="p.confirmation==false">
+                                <span></span>  
+                                  non traiter</td>
+                        <td>{{p.reason}}</td>
+                        <td>
+                          <button type="button" class="btn btn-outline-warning" (click)="updateReport(p.id)">update/validate</button>
+                            <button type="button" class="btn btn-outline-danger"
+                            (click)="deleteReport(p.id)">delete</button>                               
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+        
+    </div>
+    <div class="col-md-4">
+       
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">info_outline</i>
+                    </div>
+                    <p class="card-category">Bad Languages</p>
+                    <h3 class="card-title">{{bad}}%</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">local_offer</i> Tracked from Github
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">info_outline</i>
+                    </div>
+                    <p class="card-category">Property Damage</p>
+                    <h3 class="card-title">{{dam}}%</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">local_offer</i> Tracked from Github
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+</div>
+

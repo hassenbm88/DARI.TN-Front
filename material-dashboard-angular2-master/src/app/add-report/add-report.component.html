@@ -1,0 +1,21 @@
+<div class="col-md-6 offset-md-3">
+    <h3>Add report</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>description</label>
+            <input type="text" class="form-control" placeholder="description" id="description" [(ngModel)]="report.description"  [ngModelOptions]="{standalone: true}"  >
+        </div>
+        <br>
+        <select #cricket (change)="update($event)" [(ngModel)]="report.reason"  [ngModelOptions]="{standalone: true}"  >
+            <option value="default">----</option>
+            <option *ngFor="let reason of reasons" [value]="reason">
+                {{reason}}
+            </option>
+        </select>
+        <br>
+        <p>You selected {{selected}}</p>  
+        <br>
+        
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+</div>
