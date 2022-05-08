@@ -9,7 +9,9 @@ import { PropretyService } from 'app/Proprety.service';
 })
 export class CreateComponent implements OnInit {
   Proprety : Proprety = new Proprety();
-  selected : string = '';
+  selectedtype : string = '';
+  selectedoffre : string = '';
+
 
   constructor(private PropretyService: PropretyService) { }
   ngOnInit(): void {
@@ -21,3 +23,4 @@ export class CreateComponent implements OnInit {
   }
 
 }
+

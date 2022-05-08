@@ -10,7 +10,7 @@ describe('CreatevisiteComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CreatevisiteComponent ]
     })
-    .compileComponents();
+        .compileComponents();
   });
 
   beforeEach(() => {
@@ -23,3 +23,4 @@ describe('CreatevisiteComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

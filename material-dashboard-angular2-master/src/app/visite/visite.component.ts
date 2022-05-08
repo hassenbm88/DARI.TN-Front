@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VisiteService } from 'app/Visite.service';
 import { Visite } from 'app/model/Visite';
+import { Proprety } from 'app/model/Proprety';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -10,25 +11,27 @@ import { Observable } from 'rxjs';
   templateUrl: './visite.component.html',
   styleUrls: ['./visite.component.css']
 })
-export class visiteComponent implements OnInit {
+export class VisiteComponent implements OnInit {
+    Visite: Observable<Visite[]>;
+    Proprety: Proprety[];
+    selected = 'dumpling';
 
-  constructor(private VisiteService:VisiteService,private router: Router) { }
-  Visite : Observable<Visite[]>;
-    ngOnInit() {
-    this.VisiteService.getVisite();
-    this.Visite = this.VisiteService.getVisite();
+  constructor(private visiteService: VisiteService , private router: Router) { }
+
+  ngOnInit() {
+    this.visiteService.getVisite();
+    this.Visite = this.visiteService.getVisite();
   }
-  removeVisite(idVisite: number){
+  removeVisite(idVisite: number) {
     console.log(idVisite);
-    this.VisiteService.removeVisite(idVisite).subscribe(
-      data => {
-        this.router.navigate(['/Visite']);
-        console.log(data);
-        this.VisiteService.getVisite();
-      },
-      error => console.log(error));
-     
-};
+    this.visiteService.removeVisite(idVisite).subscribe(
+        data => {
+          this.router.navigate(['/Visite']);
+          console.log(data);
+          this.visiteService.getVisite();
+        },
+        error => console.log(error));
 
-  }
+  };
 
+}

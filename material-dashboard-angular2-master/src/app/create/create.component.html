@@ -13,20 +13,35 @@
               <div class="row">
 
                 <div class="col-md-3">
-                 <!-- <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Type" [(ngModel)]="Proprety.type">
-                  </mat-form-field> -->
+                  <!-- <mat-form-field class="example-full-width">
+                     <input matInput placeholder="Type" [(ngModel)]="Proprety.type">
+                   </mat-form-field> -->
                   <mat-form-field appearance="fill">
                     <mat-label>Select an option</mat-label>
-                    <mat-select [(value)]="selected" [(ngModel)]="Proprety.type">
+                    <mat-select [(value)]="selectedtype" [(ngModel)]="Proprety.type">
                       <mat-option>None</mat-option>
                       <mat-option value="PropertyNormal"> PropertyNormal</mat-option>
                       <mat-option value="PropertyLuxe">PropertyLuxe</mat-option>
                     </mat-select>
                     <!-- <input matInput placeholder="Type" [(ngModel)]="Proprety.type" [value]='selected'> -->
                   </mat-form-field>
-                 
-                  
+
+
+                </div>
+                <div class="col-md-3">
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Select an option</mat-label>
+                    <mat-select [(value)]="selectedoffre" [(ngModel)]="Proprety.offretype">
+                      <mat-option>None</mat-option>
+                      <mat-option value="Vacation"> Vacation</mat-option>
+                      <mat-option value="Rent">Rent</mat-option>
+                      <mat-option value="Sell">Sell</mat-option>
+                    </mat-select>
+
+                  </mat-form-field>
+
+
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
@@ -68,8 +83,8 @@
 
 
 
-              <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="create()">Create
-                Property</button>
+              <a routerLink="/table-list"> <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="create()">Create
+                Property</button></a>
               <div class="clearfix"></div>
             </form>
           </div>
@@ -77,11 +92,11 @@
       </div>
       <div class="col-md-4">
         <div class="card card-profile">
-          
-            <a href="javascript:void(0)">
-              <img class="img" src="./assets/img/faces/prop2.png" />
-            </a>
-          
+
+          <a href="javascript:void(0)">
+            <img class="img" src="./assets/img/faces/prop2.png" />
+          </a>
+
 
         </div>
       </div>
