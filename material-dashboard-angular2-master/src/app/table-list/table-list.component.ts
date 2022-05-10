@@ -1,72 +1,65 @@
-import { Component, OnInit } from '@angular/core';
-import { PropretyService } from 'app/Proprety.service';
-import { Proprety } from 'app/model/Proprety';
+import { Component, EventEmitter, OnInit, Output, Pipe, PipeTransform } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { AbonnementService } from 'app/abonnement.service';
+import { Abonnement } from 'app/model/abonnement';
+import { AppModule  } from '../app.module';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
   styleUrls: ['./table-list.component.css']
 })
+
+
 export class TableListComponent implements OnInit {
 
-  public property!: Proprety;
-  public ListProperty: Proprety[];
-  SearchVal = '';
-  Property: Observable<Proprety[]>;
+@Output() editEvent = new EventEmitter();  
+public listeAbonnement : Abonnement[] = [];
 
-  constructor(private propretyService: PropretyService, private router: Router) { }
+
+
+  constructor(private service: AbonnementService,private route: Router) { }
+
   ngOnInit() {
-    this.getProperty()
-
-  }
-  removeProprety(idProprety: number) {
-    console.log(idProprety);
-    this.propretyService.removeProprety(idProprety).subscribe(
-        data => {
-          this.router.navigate(['/table-list']);
-          console.log(data);
-          this.propretyService.getProprety();
-        },
-        error => console.log(error));
-
-  }
-  Search() {
-    // tslint:disable-next-line:triple-equals
-    if (this.SearchVal == '') {
-      this.getProperty();
-
-    } else {
-      this.propretyService.retrievePropretysByName(this.SearchVal).subscribe((data: any) => {
-        console.log('searchdata', data)
-        this.ListProperty = data
-      })
-    }
+    this.getAllAbonnement();
   }
 
-// public getProperty(): void {
-//   this.PropretyService.getProprety().subscribe(
-//       (response: Proprety[]) => {
-//         this.ListProperty = response;
-//         console.log(this.ListProperty);
-//       },
-//       (error: HttpErrorResponse) => {
-//         alert(error.message);
-//       }
-//   );
-// }
+  getAllAbonnement(){
+    this.service.getAllAbonnement().subscribe(res => {
+      this.listeAbonnement = res ;
+    });
+  }
+  
 
-  public getProperty(): void {
-    this.propretyService.getProprety();
-    this.Property = this.propretyService.getProprety();
-    this.propretyService.getProprety().subscribe((data: any) => {
-      console.log('data', data)
-      this.ListProperty = data
-    })
-
-
+  removeAbonnement(abonnement){
+    this.service.removeAbonnement(abonnement.idabonnement).subscribe();
+    this.ngOnInit();
   }
 
+  updateAbonnement(abonnement){
+    this.editEvent.emit(abonnement);
+    this.route.navigateByUrl('/editer/'+Number(abonnement.idabonnement));
+  }
+
+  public openPDF(): void {
+    let DATA: any = document.getElementById('htmlData');
+    html2canvas(DATA).then((canvas) => {
+        let fileWidth = 208;
+        let fileHeight = (canvas.height * fileWidth) / canvas.width;
+        const FILEURI = canvas.toDataURL('image/png');
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+        PDF.save('Liste des Agents.pdf');
+    });
 }
 
+
+
+
+
+}

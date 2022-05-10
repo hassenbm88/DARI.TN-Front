@@ -1,0 +1,13 @@
+<table class="table table-striped table-bordered table-sm row-border hover" >
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </thead>
+    <tbody>
+     <tr *ngFor="let abonnement of data">
+           <td>{{abonnement.amount}}</td>
+           <td>{{abonnement.Type_abonnement}}</td>
+       </tr>
+    </tbody>
+  </table>

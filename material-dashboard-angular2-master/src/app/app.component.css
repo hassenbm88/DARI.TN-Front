@@ -1,0 +1,7 @@
+.outer-div {
+    padding: 30px;
+}
+.inner-div {
+    margin: 0 auto;
+    width: 100px;
+}

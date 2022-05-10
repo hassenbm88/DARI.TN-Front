@@ -1,29 +1,60 @@
-
 <div class="main-content">
-  <div class="container-fluid">
-      <div class="card card-plain">
-          <div class="card-header card-header-danger">
-              <h4 class="card-title">Material Design Icons</h4>
-              <p class="card-category">Handcrafted by our friends from
-                  <a target="_blank" href="https://fonts.google.com/icons">Google</a>
-              </p>
-          </div>
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="card-body">
-                      <div class="iframe-container d-none d-lg-block">
-                          <iframe src="https://material.io/design/iconography/system-icons.html#grid-and-keyline-shapes">
-                              <p>Your browser does not support iframes.</p>
-                          </iframe>
-                      </div>
-                      <div class="col-md-12 d-none d-sm-block d-md-block d-lg-none d-block d-sm-none text-center ml-auto mr-auto">
-                          <h5>The icons are visible on Desktop mode inside an iframe. Since the iframe is not working on Mobile and Tablets please visit the icons on their original page on Google. Check the
-                              <a href="https://fonts.google.com/icons" target="_blank">Material Icons</a>
-                          </h5>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div *ngIf="!soustraitanceForEdite" class="card-header card-header-danger">
+                        <h4 class="card-title">Add Soustraitance</h4>
+                        <p class="card-category">add Soustraiance</p>
+                    </div>
+                    <div *ngIf="soustraitanceForEdite" class="card-header card-header-danger">
+                        <h4 class="card-title">Update Soustraitance</h4>
+                        <p class="card-category">Update Soustraiance</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="submit()" [formGroup]="ajoutFormSoustraitance">
+                            <div class="row">  
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Prix_offre" formControlName="prix_offre">
+                                    </mat-form-field>
+                                </div>                                
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Type Soustraitance" type="text" formControlName="type">
+                                  </mat-form-field>
+                                </div>  
+                            </div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Cars</mat-label>
+                                <select matNativeControl required formControlName="role_traitance">
+                                    <option *ngFor="let role of roles" [value]="role">
+                                        {{role}}
+                                    </option>
+    
+                                </select>
+                              </mat-form-field>
+
+                            <button mat-raised-button *ngIf="!soustraitanceForEdite"  type="submit" class="btn btn-danger pull-right" >Create Soustraitance</button>
+                            <button mat-raised-button *ngIf="soustraitanceForEdite"  type="submit" class="btn btn-danger pull-right" >Modifier Soustraitance</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a href="javascript:void(0)">
+                            <img class="img" src="./assets/img/faces/marc.jpg" />
+                        </a>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
-</div>
