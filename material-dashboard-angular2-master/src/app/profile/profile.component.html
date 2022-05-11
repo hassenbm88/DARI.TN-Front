@@ -1,0 +1,81 @@
+<div class="container" *ngIf="userdetails; else loggedOut">
+    <header class="jumbotron">
+      <div class="ProfileName">
+        {{ userdetails.username }}
+      </div>
+    </header>
+    <div class="profileContainer">
+        <p>
+          <strong>Account Verification:</strong>
+          {{userdetails.enabled }} 
+        </p>
+        <p>
+          <strong>Created at:</strong>
+          {{ userdetails.createdAt }} 
+        </p>
+        <p>
+          <strong>Email:</strong>
+          {{ userdetails.email }}
+        </p>
+        <p>
+        <strong>Role:</strong>
+            {{ userdetails.appUserRole }}
+          </p>
+          
+  </div>
+  </div>
+
+  <div class="chatbotContainer">
+    <div class="msg-header">
+      <div class="active">
+        <h4>ChatBot</h4>
+      </div>
+    </div>
+    <div class="chat-page">
+      <div class="msg-inbox">
+        <div class="chats">
+          <div class="msg-page" >
+            <div *ngFor = "let rep of messages">
+              
+            
+            
+             <div class="outgoing-chats">
+              <div class="outgoing-msg">
+                
+                    <p>{{rep[1]}}</p>
+                
+              </div>
+            </div>
+            
+            <div class="received-chats" >
+              <div class="received-msg">
+                <img class="robotImg" src="../assets/img/robot.png">
+                <div class="received-msg-inbox" >
+                    <p>{{rep[0]}}</p>
+                </div>
+              </div>
+            
+            
+            </div> 
+          </div>
+          </div>
+
+        </div>
+
+        <div class="msg-bottom">
+          <div class="chatInput-group">
+            <input type="text"
+            class="form-control" placeholder="write something .." [(ngModel)]="message" (keyup.enter)="chat()">
+            
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+   
+  </div>
+
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template>

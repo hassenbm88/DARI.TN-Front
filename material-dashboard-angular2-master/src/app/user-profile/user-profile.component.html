@@ -1,0 +1,345 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+                    <p class="card-category">Total Users</p>
+                    <h3 class="card-title">{{User.length}}
+                        <small>users</small>
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        
+                        <a href="javascript:void(0)"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon">
+                        <i class="fa fa-book fa-fw" aria-hidden="true"></i>
+                    </div>
+                    <p class="card-category">Etudiants</p>
+                    <h3 class="card-title">{{UserProf.length}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <!-- <i class="material-icons">date_range</i> Last 24 Hours -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="fa fa-camera-retro fa-4x"></i> 
+                    </div>
+                    <p class="card-category">Artistes</p>
+                    <h3 class="card-title">{{UserProf1.length}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <!-- <i class="material-icons">local_offer</i> Tracked from Github -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon">
+                        <i class="fa fa-cog fa-fw" aria-hidden="true"></i>
+                    </div>
+                    <p class="card-category">Autres</p>
+                    <h3 class="card-title">{{Userautre.length}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <!-- <i class="material-icons">update</i> Just Updated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chartClass" id="divChart">
+        <canvas id="myChart">
+            
+        </canvas>
+        
+    </div>
+    <div>
+        <input class="form-control" placeholder="Search" type="text" [(ngModel)]="SearchVal" (keyup)="Search()">
+      </div>
+      <div class="row">
+          
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">User list</h4>
+                      <p class="card-category"></p>
+                  </div>
+                  
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+
+                                <th>
+                                       Name
+                                  </th>
+                                  <th>
+                                      Email
+                                  </th>
+                                  <th>
+                                      password
+                                  </th>
+                                  <th>
+                                      role
+                                  </th>
+                                 
+                              </thead>
+                              <tbody>
+                                  
+                                      <tr *ngFor="let c of User ">
+                                        <td>
+                                        {{c.username}}
+                                    </td>
+                                    <td>
+                                       {{c.email}}
+                                    </td>
+                                    <td>
+                                        {{c.password}}
+                                    </td>
+                                    <td>
+                                        {{c.role}}
+                                    </td>
+                                     <td>
+                                        {{c.authorities[0].authority}}
+                                    </td> 
+                                      
+                                      <td>
+                                        <a href="javascript:void(0)" class="btn btn-danger btn-round">view</a>
+
+                                      </td>
+                                      <td class="td-actions text-right">
+                                        <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" (click)="deleteUser(c.email)"class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                  </tr>
+                             
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+
+
+                  <!--get Etudiants :-->
+                  <div class="row">
+                  <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Liste des Etudiants</h4>
+                        <p class="card-category"></p>
+                    </div>
+                  
+                  <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+
+                              <th>
+                                     Name
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    password
+                                </th>
+                                <th>
+                                    role
+                                </th>
+                               
+                            </thead>
+                            <tbody>
+                                
+                                    <tr *ngFor="let user of UserProf ">
+                                        <td>
+                                            {{user.username}}
+                                         </td>
+                                         <td>
+                                            {{user.email}}
+                                         </td>
+                                         <td>
+                                             {{user.password}}
+                                         </td>
+                                         <td>
+                                             {{user.authorities[0].authority}}
+                                         </td>
+                                    <td>
+                                      <a href="javascript:void(0)" class="btn btn-danger btn-round">view</a>
+
+                                    </td>
+                                    <td class="td-actions text-right">
+                                      <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                          <i class="material-icons">edit</i>
+                                      </button>
+                                      <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" (click)="deleteUser(c.email)"class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                          <i class="material-icons">close</i>
+                                      </button>
+                                  </td>
+                                </tr>
+                           
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                  </div>
+                  </div>
+                </div>
+
+                 <!--get artist :-->
+                 <div class="row">
+                    <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header card-header-danger">
+                          <h4 class="card-title ">Liste des Artistes</h4>
+                          <p class="card-category"></p>
+                      </div>
+                    
+                    <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+  
+                                <th>
+                                       Name
+                                  </th>
+                                  <th>
+                                      Email
+                                  </th>
+                                  <th>
+                                      password
+                                  </th>
+                                  <th>
+                                      role
+                                  </th>
+                                 
+                              </thead>
+                              <tbody>
+                                  
+                                      <tr *ngFor="let userrr of UserProf1 ">
+                                          <td>
+                                              {{userrr.username}}
+                                           </td>
+                                           <td>
+                                              {{userrr.email}}
+                                           </td>
+                                           <td>
+                                               {{userrr.password}}
+                                           </td>
+                                           <td>
+                                               {{userrr.authorities[0].authority}}
+                                           </td>
+                                      <td>
+                                        <a href="javascript:void(0)" class="btn btn-danger btn-round">view</a>
+  
+                                      </td>
+                                      <td class="td-actions text-right">
+                                        <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" (click)="deleteUser(c.email)"class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                  </tr>
+                             
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+                    </div>
+                    </div>
+                  </div>
+                  <!--get autres :-->
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header card-header-danger">
+                          <h4 class="card-title ">Autres</h4>
+                          <p class="card-category"></p>
+                      </div>
+                    
+                    <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+  
+                                <th>
+                                       Name
+                                  </th>
+                                  <th>
+                                      Email
+                                  </th>
+                                  <th>
+                                      password
+                                  </th>
+                                  <th>
+                                      role
+                                  </th>
+                                 
+                              </thead>
+                              <tbody>
+                                  
+                                      <tr *ngFor="let userr of Userautre ">
+                                          <td>
+                                              {{userr.username}}
+                                           </td>
+                                           <td>
+                                              {{userr.email}}
+                                           </td>
+                                           <td>
+                                               {{userr.password}}
+                                           </td>
+                                           <td>
+                                               {{userr.authorities[0].authority}}
+                                           </td>
+                                      <td>
+                                        <a href="javascript:void(0)" class="btn btn-danger btn-round">view</a>
+  
+                                      </td>
+                                      <td class="td-actions text-right">
+                                        <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" (click)="deleteUser(c.email)"class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                  </tr>
+                             
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+                    </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+         

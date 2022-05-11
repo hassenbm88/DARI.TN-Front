@@ -1,0 +1,7 @@
+.chartClass{
+    width: 50%;
+    margin-left: 25%;
+}
+.container, .container-lg, .container-md, .container-sm, .container-xl{
+    margin-top: 10px !important;
+}

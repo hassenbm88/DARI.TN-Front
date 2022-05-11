@@ -7,20 +7,24 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+//import { CreateComponent } from './create/create.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { CreateComponent } from 'app/create/create.component';
-import { CreatevisiteComponent } from 'app/createvisite/createvisite.component';
-import { AgentComponent } from './agent/agent.component';
-import { ReglementComponent } from './reglement/reglement.component';
-import { AddAideComponent } from 'app/add-aide/add-aide.component';
-import { AideComponent } from 'app/aide/aide.component';
-import { UpdateAideComponent } from 'app/update-aide/update-aide.component';
-import { UpdateReportComponent } from './update-report/update-report.component';
-import { AddReportComponent } from './add-report/add-report.component';
-import { ReportComponent } from './report/report.component';
+/*import { AfficherComponent } from './afficher/afficher.component';*/
+import { NgChartsModule } from 'ng2-charts';
+//import { UsersChartComponent } from './users-chart/users-chart.component';
+import { DatePipe } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardModerateurComponent } from './board-moderateur/board-moderateur.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { CredentielsComponent } from './credentiels/credentiels.component';
 
 @NgModule({
   imports: [
@@ -31,32 +35,30 @@ import { ReportComponent } from './report/report.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    MatSelectModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule,
+    NgChartsModule
+    
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    CreateComponent,
-    CreatevisiteComponent,
-    AgentComponent,
-    ReglementComponent,
-    AideComponent,
-    UpdateAideComponent,
-    AddAideComponent,
-    ReportComponent,
-    AddReportComponent,
-    UpdateReportComponent,
-    
-
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModerateurComponent,
+    BoardUserComponent,
+    ConfirmEmailComponent,
+    CredentielsComponent,
+   // UsersChartComponent,
+   /* AfficherComponent,*/
     
    
 
 
   ],
-  providers: [],
+  providers: [DatePipe],
+ // providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
